@@ -4847,6 +4847,12 @@ public final class Settings {
         public static final String LOCKSCREEN_MEDIA_ART = "lockscreen_media_art";
 
         /**
+         * Whether to enable screenshot sound
+         * @hide
+         */
+        public static final String SCREENSHOT_SOUND = "screenshot_sound";
+
+        /**
          * These are all public system settings
          *
          * @hide
