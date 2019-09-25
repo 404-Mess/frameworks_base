@@ -4852,6 +4852,9 @@ public final class Settings {
          */
         public static final String PULSE_ON_NEW_TRACKS = "pulse_on_new_tracks";
 
+        /** @hide */
+        public static final String BACK_GESTURE_HEIGHT = "back_gesture_height";
+
         /**
          * Whether to enable screenshot sound
          * @hide
