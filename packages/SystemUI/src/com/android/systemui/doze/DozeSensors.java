@@ -67,7 +67,6 @@ public class DozeSensors {
     private final AlarmManager mAlarmManager;
     private final AsyncSensorManager mSensorManager;
     private final ContentResolver mResolver;
-    private final TriggerSensor mPickupSensor;
     private final DozeParameters mDozeParameters;
     private final AmbientDisplayConfiguration mConfig;
     private final WakeLock mWakeLock;
@@ -82,7 +81,6 @@ public class DozeSensors {
     private boolean mSettingRegistered;
     private boolean mListening;
     private boolean mDisableProx;
-    private boolean mPaused;
 
     @VisibleForTesting
     public enum DozeSensorsUiEvent implements UiEventLogger.UiEventEnum {
@@ -125,7 +123,7 @@ public class DozeSensors {
                         dozeParameters.getPulseOnSigMotion(),
                         DozeLog.PULSE_REASON_SENSOR_SIGMOTION, false /* touchCoords */,
                         false /* touchscreen */, dozeLog),
-                mPickupSensor = new TriggerSensor(
+                new TriggerSensor(
                         mSensorManager.getDefaultSensor(Sensor.TYPE_PICK_UP_GESTURE),
                         Settings.Secure.DOZE_PICK_UP_GESTURE,
                         true /* settingDef */,
@@ -237,18 +235,6 @@ public class DozeSensors {
     }
 
     /**
-     * Unregister sensors, when listening, unless they are prox gated.
-     * @see #setListening(boolean)
-     */
-    public void setPaused(boolean paused) {
-        if (mPaused == paused) {
-            return;
-        }
-        mPaused = paused;
-        updateListening();
-    }
-
-    /**
      * Registers/unregisters sensors based on internal state.
      */
     public void updateListening() {
@@ -308,10 +294,6 @@ public class DozeSensors {
             }
         }
     };
-
-    public void setDisableSensorsInterferingWithProximity(boolean disable) {
-        mPickupSensor.setDisabled(disable);
-    }
 
     /** Ignore the setting value of only the sensors that require the touchscreen. */
     public void ignoreTouchScreenSensorsSettingInterferingWithDocking(boolean ignore) {
