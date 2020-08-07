@@ -4933,6 +4933,12 @@ public final class Settings {
         public static final String QS_COLUMNS_LANDSCAPE = "qs_columns_landscape";
 
         /**
+        * Music Card in VolumePanel
+        * @hide
+        */
+        public static final String MUSIC_VOLUME_PANEL_DIALOG = "music_volume_panel_dialog";
+
+        /**
          * These are all public system settings
          *
          * @hide

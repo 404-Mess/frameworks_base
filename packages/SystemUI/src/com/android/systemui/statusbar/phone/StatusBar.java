@@ -1181,6 +1181,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             createUserSwitcher();
         }
 
+        // Other icons
+        mVolumeComponent.initDependencies(mMediaManager);
+
         mNotificationPanelViewController.setLaunchAffordanceListener(
                 mLockscreenLockIconController::onShowingLaunchAffordanceChanged);
 

@@ -29,4 +29,8 @@
     <!-- Width of the battery icon in the status bar when set to circle style. -->
     <dimen name="status_bar_battery_icon_circle_width">13.5dp</dimen>
 
+    <!-- Volumme Panel -->
+    <dimen name="volume_dialog_aosp_card_media_size">135dp</dimen>
+    <dimen name="custom_volume_media_card_height">150dip</dimen>
+
 </resources>

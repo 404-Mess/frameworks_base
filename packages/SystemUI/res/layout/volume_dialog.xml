@@ -160,4 +160,12 @@
         android:layout_marginRight="@dimen/volume_tool_tip_right_margin"
         android:layout_marginBottom="@dimen/volume_tool_tip_bottom_margin"/>
 
+    <include
+            layout="@layout/volume_media_card"
+            android:layout_width="@dimen/custom_volume_media_card_height"
+            android:layout_height="@dimen/custom_volume_media_card_height"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/volume_dialog_spacer"
+            android:layout_marginStart="2dp" />
+
 </FrameLayout>

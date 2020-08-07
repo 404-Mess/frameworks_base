@@ -64,6 +64,7 @@
             android:maxLines="2"
             android:lineSpacingMultiplier="1.2"
             systemui:showDark="false"
+            android:fontFamily="@*android:string/config_bodyFontFamily"
             android:layout_gravity="end|center_vertical"/>
 
 </FrameLayout>
