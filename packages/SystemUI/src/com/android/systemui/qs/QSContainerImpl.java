@@ -162,19 +162,6 @@ public class QSContainerImpl extends FrameLayout {
                 MeasureSpec.makeMeasureSpec(getDisplayHeight(), MeasureSpec.EXACTLY));
     }
 
-
-    @Override
-    protected void measureChildWithMargins(View child, int parentWidthMeasureSpec, int widthUsed,
-            int parentHeightMeasureSpec, int heightUsed) {
-        // Do not measure QSPanel again when doing super.onMeasure.
-        // This prevents the pages in PagedTileLayout to be remeasured with a different (incorrect)
-        // size to the one used for determining the number of rows and then the number of pages.
-        if (child != mQSPanelContainer) {
-            super.measureChildWithMargins(child, parentWidthMeasureSpec, widthUsed,
-                    parentHeightMeasureSpec, heightUsed);
-        }
-    }
-
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
@@ -196,15 +183,9 @@ public class QSContainerImpl extends FrameLayout {
         mQSPanelContainer.setLayoutParams(layoutParams);
 
         mSideMargins = getResources().getDimensionPixelSize(R.dimen.notification_side_paddings);
-        mContentPaddingStart = getResources().getDimensionPixelSize(
-                com.android.internal.R.dimen.notification_content_margin_start);
-        int newPaddingEnd = getResources().getDimensionPixelSize(
-                com.android.internal.R.dimen.notification_content_margin_end);
-        boolean marginsChanged = newPaddingEnd != mContentPaddingEnd;
-        mContentPaddingEnd = newPaddingEnd;
-        if (marginsChanged) {
-            updatePaddingsAndMargins();
-        }
+        mContentPaddingStart = 0;
+        mContentPaddingEnd = 0;
+        updatePaddingsAndMargins();
     }
 
     /**
@@ -227,6 +208,9 @@ public class QSContainerImpl extends FrameLayout {
         setBottom(getTop() + height);
         mQSDetail.setBottom(getTop() + height);
         // Pin the drag handle to the bottom of the panel.
+        View mFooter = findViewById(R.id.qs_footer);
+        // Pin the footer to teh bottom of the panel.
+        mFooter.setTranslationY(height - mFooter.getHeight());
         mBackground.setTop(mQSPanelContainer.getTop());
         updateBackgroundBottom(height, animate);
     }
