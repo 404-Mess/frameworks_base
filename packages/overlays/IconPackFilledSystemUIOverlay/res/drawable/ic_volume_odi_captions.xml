@@ -15,10 +15,10 @@
    limitations under the License.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="24dp"
-    android:viewportHeight="24"
-    android:viewportWidth="24"
-    android:width="24dp" >
+    android:height="16dp"
+    android:viewportHeight="24.0"
+    android:viewportWidth="24.0"
+    android:width="16dp">
     <group
         android:translateX="2.000000"
         android:translateY="4.000000" >
